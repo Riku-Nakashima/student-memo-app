@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>指導メモ</title>
+    <style>
+body {
+    font-family: sans-serif;
+    background: #f5f7fa;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+a {
+    text-decoration: none;
+    color: #2980b9;
+}
+</style>
+</head>
+<body>
+    <h1>{{ student["name"] }}（{{ student["grade"] }}）</h1>
+    <form method="post" action="/student/delete/{{ student['id'] }}"
+        onsubmit="return confirm('本当にこの生徒を削除しますか？\nメモもすべて消えます');">
+      <button type="submit" style="color:white;">
+        生徒を削除
+      </button>
+    </form>
+
+
+    <h2>指導メモを追加</h2>
+
+    <form method="post">
+      教科：
+      <select name="subject" required>
+        <option value="国語">国語</option>
+        <option value="数学">数学</option>
+        <option value="英語">英語</option>
+        <option value="理科">理科</option>
+        <option value="社会">社会</option>
+      </select>
+      <br><br>
+
+      <textarea name="content" rows="4" cols="50" required></textarea>
+      <br>
+
+      <button type="submit">保存</button>
+    </form>
+
+    <h2>指導メモ一覧</h2>
+    <ul>
+        {% for note in notes %}
+            <li>
+                {{ note["date"] }}|
+                【{{ note["subject"] }}】
+                {{ note["content"] }}
+
+                 <form method="post"
+                       action="/note/delete/{{ note['id'] }}"
+                       style="display:inline;">
+                       <button type="submit">削除</button>
+                 </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="/">← 生徒一覧に戻る</a></p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>生徒一覧</title>
+    <style>
+body {
+    font-family: sans-serif;
+    background: #f5f7fa;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+a {
+    text-decoration: none;
+    color: #2980b9;
+}
+</style>
+</head>
+<body>
+    <h1>生徒一覧</h1>
+
+    <h2>生徒検索</h2>
+    <form method="get">
+      <input type="text" name="q" placeholder="名前で検索">
+      <button type="submit">検索</button>
+    </form>
+
+
+    <h2>生徒を追加</h2>
+    <form method="post" action="/">
+        名前：<input type="text" name="name" required>
+        学年：<input type="text" name="grade">
+        <button type="submit">追加</button>
+    </form>
+
+    <h2>登録済み生徒</h2>
+    <ul>
+   	 {% for student in students %}
+   	     <li>
+           	 <a href="/student/{{ student['id'] }}">
+             	   {{ student["name"] }}（{{ student["grade"] }}）
+        	 </a>
+       	     </li>
+    	 {% endfor %}
+    </ul>
+</body>
+</html>
