@@ -27,17 +27,17 @@
 students と notes は 1 対 多 の関係になっています。
 
 ## 起動方法
-1. リポジトリをクローン
-git clone https://github.com/Riku-Nakashima/student-memo-app.git
-cd student-memo-app
-2. 必要なライブラリをインストール
-pip install flask
-3. データベースを初期化
-python init_db.py
-4. アプリを起動
-python app.py
-5. ブラウザで以下にアクセス  
-http://localhost:5000
+- 1. リポジトリをクローン
+- git clone https://github.com/Riku-Nakashima/student-memo-app.git
+- cd student-memo-app
+- 2. 必要なライブラリをインストール
+- pip install flask
+- 3. データベースを初期化
+- python init_db.py
+- 4. アプリを起動
+- python app.py
+- 5. ブラウザで以下にアクセス  
+- http://localhost:5000
 
 ## 今後の改善点
 - ログイン機能の追加
